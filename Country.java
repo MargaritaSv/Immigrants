@@ -11,4 +11,10 @@ public class Country extends NamesGeographic {
     public Country(String name) {
         super(name);
     }
+
+    public void addCities(City... city) {
+        for (City c : city) {
+            cities.add(c);
+        }
+    }
 }
