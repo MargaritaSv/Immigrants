@@ -63,6 +63,13 @@ public class Main {
             System.out.println(immigrants[i]);
         }
 
+        //3
+
+        for (Immigrant immigrant : immigrants) {
+            for (int i = 0; i < 5; i++) {
+
+            }
+        }
 
     }
 
