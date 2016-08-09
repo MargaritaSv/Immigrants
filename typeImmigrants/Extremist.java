@@ -1,7 +1,6 @@
 package immigrants.typeImmigrants;
 
 import immigrants.Gunable;
-import immigrants.Passport;
 import immigrants.Weapon;
 
 /**
@@ -12,10 +11,6 @@ public class Extremist extends Immigrant implements Gunable {
         super(startedMoney);
     }
 
-    @Override
-    public String toString() {
-        return "Extremist immigrant: " + super.toString();
-    }
 
     @Override
     public void buyGun(Weapon weapon) {
@@ -25,5 +20,10 @@ public class Extremist extends Immigrant implements Gunable {
         if (super.borderMoney <= 0) {
             System.out.println("write something /... no money ");
         }
+    }
+
+    @Override
+    public String toString() {
+        return "Extremist immigrant: " + super.toString();
     }
 }

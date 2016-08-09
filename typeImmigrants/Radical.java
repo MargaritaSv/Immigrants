@@ -17,11 +17,6 @@ public class Radical extends Immigrant implements Gunable {
 
 
     @Override
-    public String toString() {
-        return this.passport + " \n" + super.toString();
-    }
-
-    @Override
     public void buyGun(Weapon weapon) {
         if (super.weaponList.size() >= 5) {
             throw new IllegalArgumentException("You ca not have more than 5 weapons.");
@@ -32,6 +27,12 @@ public class Radical extends Immigrant implements Gunable {
         if (super.borderMoney <= 0) {
             System.out.println("write something /... no money ");
         }
+    }
+
+
+    @Override
+    public String toString() {
+        return this.passport + " \n" + super.toString();
     }
 
 }

@@ -62,12 +62,9 @@ public class Main {
             }
         }
 
-        for (int i = 0; i < immigrants.length; i++) {
-            System.out.println(immigrants[i]);
-        }
 
         //3
-
+// create random number of different weapon
         List<Weapon> weapons = new LinkedList<>();
         for (int i = 0; i < NUMBER_OF_WEAPONS; i++) {
             int rnd = new Random().nextInt(3) + 1;
@@ -75,14 +72,29 @@ public class Main {
             weapons.add(weapon);
         }
 
-        for (int i = 0; i < weapons.size(); i++) {
-            System.out.println(weapons.get(i).name() + " " + weapons.get(i).getCost());
+        //immigrants buy a gun
+        int indexForWeapon = 0;
+        boolean noMoreWeapons = false;
+
+        for (int exactBuyer = 0; exactBuyer < immigrants.length && noMoreWeapons == false; exactBuyer++) {
+            for (int i = 0; i < 5; i++) {
+                if (immigrants[exactBuyer] instanceof Extremist) {
+                    ((Extremist) immigrants[exactBuyer]).buyGun(weapons.get(indexForWeapon++));
+                } else if (immigrants[exactBuyer] instanceof Radical) {
+                    ((Radical) immigrants[exactBuyer]).buyGun(weapons.get(indexForWeapon++));
+                } else {
+                    break; // it's normal immigrant
+                }
+
+                if (indexForWeapon >= weapons.size()) {
+                    noMoreWeapons = true;
+                    break;
+                }
+            }
         }
 
-        for (Immigrant immigrant : immigrants) {
-            for (int i = 0; i < 5; i++) {
-
-            }
+        for (int i = 0; i < immigrants.length; i++) {
+            System.out.println(immigrants[i]);
         }
 
     }

@@ -1,7 +1,6 @@
 package immigrants.typeImmigrants;
 
 import immigrants.Weapon;
-
 import java.util.LinkedList;
 import java.util.List;
 
@@ -11,12 +10,13 @@ import java.util.List;
 public abstract class Immigrant {
     int borderMoney;
     List<Immigrant> family;
-    List<Weapon> weaponList = new LinkedList<>();
+    List<Weapon> weaponList;
 
 
     public Immigrant(int startedMoney) {
         this.borderMoney = startedMoney;
         this.family = new LinkedList<>();
+        this.weaponList = new LinkedList<>();
     }
 
     public void addFamily(Immigrant immigrant) {
@@ -38,7 +38,6 @@ public abstract class Immigrant {
     }
 
 
-
     @Override
     public String toString() {
         StringBuilder sB = new StringBuilder();
@@ -52,6 +51,10 @@ public abstract class Immigrant {
         }
 */
         sB.append(this.family.size());
+
+        sB.append("\nWeapon/s:\n");
+       this. weaponList.forEach(x -> sB.append(x.name().toString().toLowerCase()).append(", "));
+
         return sB.toString();
     }
 }
