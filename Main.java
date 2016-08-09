@@ -18,6 +18,13 @@ public class Main {
 
         poland.addCities(santok, krosno, lubusz, rogozno, poznan);
 
+        //2
+        final String[] names = {"Zhlab", "DzinDjan", "Djafira", "Stanka", "Gergina", "Stefka", "Radka", "Pesho", "Gosho", "Andrelius", "Kasandra", "Armira", "Penelope"};
 
+        /*
+        for (int i = 0; i < ; i++) {
+
+        }
+    */
     }
 }
