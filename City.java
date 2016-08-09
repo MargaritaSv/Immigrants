@@ -7,7 +7,7 @@ import java.util.List;
 /**
  * Created by Magi on 6.8.2016 г..
  */
-public class City extends NamesGeographic {
+public class City extends NamesGeographic implements Comparable<City> {
     List<PoliceOfficer> policeOfficers;
     int residents;
     List<Immigrant> immigrants;
@@ -24,4 +24,14 @@ public class City extends NamesGeographic {
         policeOfficers = new ArrayList<>();
         immigrants = new LinkedList<>();
     }
+
+    @Override
+    public int compareTo(City city) {
+        if (this.name != city.name) {
+            return 0;
+        } else {
+            return -1;
+        }
+    }
+
 }
