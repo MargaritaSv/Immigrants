@@ -29,6 +29,7 @@ public class Main {
             Passport passport;
             if (Math.random() > 0.45) {
                 //normal
+
                 passport = new Passport(names[new Random().nextInt(names.length - 1)],
                         (short) ((short) Math.random() * (MAX_YEARS_IMMIGRANT - MIN_YEARS_IMMIGRANT) + MIN_YEARS_IMMIGRANT), "Some address capital  and city");
             } else if (Math.random() > 0.35) {

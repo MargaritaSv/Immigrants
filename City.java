@@ -1,5 +1,7 @@
 package immigrants;
 
+import immigrants.typeImmigrants.Immigrant;
+
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;

@@ -25,6 +25,10 @@ public class Passport {
         this.bornAddress = bornAddress;
     }
 
+    public String getName() {
+        return name;
+    }
+
     private boolean checkValidation(String input) {
         return input != null || input.trim().length() == 0;
     }
