@@ -53,9 +53,16 @@ public class Main {
         }
 
 
+        for (Immigrant imm : immigrants) {
+            for (int i = 0; i < 2; i++) {
+                imm.addFamily(immigrants[new Random().nextInt(immigrants.length - 1)]);
+            }
+        }
+
         for (int i = 0; i < immigrants.length; i++) {
             System.out.println(immigrants[i]);
         }
+
 
     }
 
