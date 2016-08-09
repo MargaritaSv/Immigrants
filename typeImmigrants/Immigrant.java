@@ -1,5 +1,7 @@
 package immigrants.typeImmigrants;
 
+import immigrants.Weapon;
+
 import java.util.LinkedList;
 import java.util.List;
 
@@ -9,12 +11,12 @@ import java.util.List;
 public abstract class Immigrant {
     int borderMoney;
     List<Immigrant> family;
-    //TODO:   //List<Weapon> weapon = new ArrayList();
+    List<Weapon> weaponList = new LinkedList<>();
 
 
     public Immigrant(int startedMoney) {
         this.borderMoney = startedMoney;
-        family = new LinkedList<>();
+        this.family = new LinkedList<>();
     }
 
     public void addFamily(Immigrant immigrant) {
@@ -26,14 +28,16 @@ public abstract class Immigrant {
         */
 
         if (!(this instanceof Normal)) {
-            family.add(immigrant);
+            this.family.add(immigrant);
         } else {
-            if (family.size() >= 11) {
+            if (this.family.size() >= 11) {
                 throw new IllegalArgumentException("No more people added to your family three!");
             }
-            family.add(immigrant);
+            this.family.add(immigrant);
         }
     }
+
+
 
     @Override
     public String toString() {
@@ -47,7 +51,7 @@ public abstract class Immigrant {
             sB.append("      --").append(member);
         }
 */
-        sB.append(family.size());
+        sB.append(this.family.size());
         return sB.toString();
     }
 }

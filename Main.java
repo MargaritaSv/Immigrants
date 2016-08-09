@@ -5,6 +5,8 @@ import immigrants.typeImmigrants.Immigrant;
 import immigrants.typeImmigrants.Normal;
 import immigrants.typeImmigrants.Radical;
 
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Random;
 
 /**
@@ -14,6 +16,7 @@ public class Main {
     public static final int MAX_YEARS_IMMIGRANT = 115;
     public static final int MIN_YEARS_IMMIGRANT = 1;
     public static final int NUMBER_OF_IMMIGRANTS = 100;
+    public static final int NUMBER_OF_WEAPONS = 200;
 
     public static void main(String[] args) {
         //1
@@ -64,6 +67,17 @@ public class Main {
         }
 
         //3
+
+        List<Weapon> weapons = new LinkedList<>();
+        for (int i = 0; i < NUMBER_OF_WEAPONS; i++) {
+            int rnd = new Random().nextInt(3) + 1;
+            Weapon weapon = rnd == 1 ? Weapon.GUN : ((rnd == 2) ? Weapon.AUTOMATE : Weapon.BOMB);
+            weapons.add(weapon);
+        }
+
+        for (int i = 0; i < weapons.size(); i++) {
+            System.out.println(weapons.get(i).name() + " " + weapons.get(i).getCost());
+        }
 
         for (Immigrant immigrant : immigrants) {
             for (int i = 0; i < 5; i++) {
