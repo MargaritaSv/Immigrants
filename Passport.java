@@ -32,4 +32,9 @@ public class Passport {
     private boolean checkValidation(String input) {
         return input != null || input.trim().length() == 0;
     }
+
+    @Override
+    public String toString() {
+        return "\nName: " + this.getName() + " years: " + this.years + "\nAddress: " + this.bornAddress;
+    }
 }
