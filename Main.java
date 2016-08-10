@@ -25,11 +25,11 @@ public class Main {
         //1
         Country poland = new Country("Poland");
 
-        City santok = new City("Santok", (int) (Math.random() * 6000.0));
-        City krosno = new City("Krosno", (int) (Math.random() * 6000.0));
-        City lubusz = new City("Lubusz", (int) (Math.random() * 6000.0));
-        City rogozno = new City("Rogozno", (int) (Math.random() * 6000.0));
-        City poznan = new City("Poznan", (int) (Math.random() * 6000.0));
+        City santok = new City("Santok", (int) (Math.random() * (60000.0 - 8) + 8));
+        City krosno = new City("Krosno", (int) (Math.random() * (4000.0 - 8) + 8));
+        City lubusz = new City("Lubusz", (int) (Math.random() * (500.0 - 8) + 8));
+        City rogozno = new City("Rogozno", (int) (Math.random() * (6000.0 - 8) + 8));
+        City poznan = new City("Poznan", (int) (Math.random() * (6000.0 - 8) + 8));
 
         poland.addCities(santok, krosno, lubusz, rogozno, poznan);
 
@@ -112,7 +112,7 @@ public class Main {
 
     private static Passport getPassport() {
         Passport passport;
-        passport = new Passport("Doesn't exist", (short) 0, "Doesn't exist");
+        passport = new Passport("missing", (short) 0, "missing");
         return passport;
     }
 

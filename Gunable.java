@@ -5,5 +5,4 @@ package immigrants;
  */
 public interface Gunable {
     void buyGun(Weapon weapon);
-
 }

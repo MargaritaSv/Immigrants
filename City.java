@@ -35,5 +35,4 @@ public class City extends NamesGeographic implements Comparable<City> {
             return -1;
         }
     }
-
 }

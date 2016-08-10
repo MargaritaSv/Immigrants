@@ -13,8 +13,8 @@ public abstract class Immigrant {
     List<Weapon> weaponList;
 
 
-    public Immigrant(int startedMoney) {
-        this.borderMoney = startedMoney;
+    public Immigrant(int borderMoney) {
+        this.borderMoney = borderMoney;
         this.family = new LinkedList<>();
         this.weaponList = new LinkedList<>();
     }
@@ -41,7 +41,7 @@ public abstract class Immigrant {
     public String toString() {
         StringBuilder sB = new StringBuilder();
 
-        sB.append("Border money: ").append(this.borderMoney);
+        sB.append("Border money: ").append(this.borderMoney).append("$");
         sB.append("\nFamily:").append(System.lineSeparator());
         //TODO: fix the ... vurteleshkata .. :D
         /*

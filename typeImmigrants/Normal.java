@@ -1,7 +1,6 @@
 package immigrants.typeImmigrants;
 
 import immigrants.Passport;
-import immigrants.Weapon;
 
 /**
  * Created by Magi on 9.8.2016 г..
