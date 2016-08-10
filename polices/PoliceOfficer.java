@@ -32,6 +32,6 @@ public class PoliceOfficer extends Police {
             }
         }
 
-        System.out.println("The immigrant is checked!");
+        System.out.println("The immigrant is checked from police officer " + this.getName() + "!");
     }
 }

@@ -23,6 +23,6 @@ public class SpecialForces extends Police {
 
     @Override
     public void checkImmigrants(Immigrant immigrant) {
-        System.out.println("From the special forces they're no escape!");
+        System.out.println("From the special force " + this.getName() + " they're no escape!");
     }
 }

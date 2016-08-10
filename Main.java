@@ -34,9 +34,9 @@ public class Main {
         poland.addCities(santok, krosno, lubusz, rogozno, poznan);
 
         //2 and 4
-        City[] cities = new City[]{krosno, santok, lubusz, rogozno, poznan};
+        City[] citiesPoland = new City[]{krosno, santok, lubusz, rogozno, poznan};
 
-        LinkedList<Immigrant> immigrants = createImmigrants(cities);
+        LinkedList<Immigrant> immigrants = createImmigrants(citiesPoland);
 
         for (Immigrant immigrant : immigrants) {
             for (int i = 0; i < 2; i++) {
@@ -48,15 +48,47 @@ public class Main {
         //3
         // create random number of different weapon
         List<Weapon> weapons = new LinkedList<>();
-        for (int i = 0; i < NUMBER_OF_WEAPONS; i++) {
-            int rnd = new Random().nextInt(3) + 1;
-            Weapon weapon = rnd == 1 ? Weapon.GUN : ((rnd == 2) ? Weapon.AUTOMATE : Weapon.BOMB);
-            weapons.add(weapon);
+        createWeapons(weapons);
+
+        immigrantsBuyAGun(immigrants, weapons);
+
+        //4
+
+        //4.1 create police
+        final String[] policeName = new String[]{"Wojtek", "Bartek", "Kamil", "Marchin", "Mateusz", "Lukasz", "Igor", "Lewy", "Max", "John", "Tymon", "Rafa", "Kajtek", "Rem"};
+        Police[] polices = new Police[100];
+        Police police;
+        for (int i = 0; i < polices.length; i++) {
+            if (i % 2 == 0) {
+                police = new PoliceOfficer(policeName[new Random().nextInt(policeName.length - 1)], citiesPoland[new Random().nextInt(citiesPoland.length - 1)]);
+            } else {
+                police = new SpecialForces(policeName[new Random().nextInt(policeName.length - 1)], citiesPoland[new Random().nextInt(citiesPoland.length - 1)]);
+            }
+            polices[i] = police;
         }
 
-        System.out.println("Number of Immigrants: " + immigrants.size());
+        //4.2 thirty percent from all emigrants go there... and there ... and everywhere
+        int emigrantAnotherCity = (int) (immigrants.size() * 0.3);
+        for (int i = 0; i < emigrantAnotherCity; i++) {
+            //rnd emigrant
+            int rnd = new Random().nextInt(immigrants.size() - 1);
+            Immigrant goSomeWhere = immigrants.get(rnd);
+            goSomeWhere.setCityNow(citiesPoland[new Random().nextInt(citiesPoland.length - 1)]);
 
-        //immigrants buy a gun
+            //catch from police
+            police = polices[new Random().nextInt(polices.length - 1)];
+            police.catchImmigrants(goSomeWhere);
+        }
+
+        //System.out.println("Number of em...: "+emigrantAnotherCity);
+
+        for (int i = 0; i < immigrants.size(); i++) {
+            System.out.println(immigrants.get(i));
+        }
+
+    }
+
+    private static void immigrantsBuyAGun(LinkedList<Immigrant> immigrants, List<Weapon> weapons) {
         for (int exactBuyer = 0; exactBuyer < immigrants.size() && weapons.size() != 0; exactBuyer++) {
             for (int i = 0; i < 5; i++) {
                 if (immigrants.get(exactBuyer) instanceof Extremist) {
@@ -87,43 +119,14 @@ public class Main {
                 }
             }
         }
+    }
 
-        System.out.println("Number of Immigrants: " + immigrants.size());
-
-        //4
-
-        //4.1 create police
-        final String[] policeName = new String[]{"Wojtek", "Bartek", "Kamil", "Marchin", "Mateusz", "Lukasz", "Igor", "Lewy", "Max", "John", "Tymon", "Rafa", "Kajtek", "Rem"};
-        Police[] polices = new Police[100];
-        Police police;
-        for (int i = 0; i < polices.length; i++) {
-            if (i % 2 == 0) {
-                police = new PoliceOfficer(policeName[new Random().nextInt(policeName.length - 1)], cities[new Random().nextInt(cities.length - 1)]);
-            } else {
-                police = new SpecialForces(policeName[new Random().nextInt(policeName.length - 1)], cities[new Random().nextInt(cities.length - 1)]);
-            }
-            polices[i] = police;
+    private static void createWeapons(List<Weapon> weapons) {
+        for (int i = 0; i < NUMBER_OF_WEAPONS; i++) {
+            int rnd = new Random().nextInt(3) + 1;
+            Weapon weapon = rnd == 1 ? Weapon.GUN : ((rnd == 2) ? Weapon.AUTOMATE : Weapon.BOMB);
+            weapons.add(weapon);
         }
-
-        //4.2 thirty percent from all emigrants go there... and there ... and everywhere
-        int emigrantAnotherCity = (int) (immigrants.size() * 0.3);
-        for (int i = 0; i < emigrantAnotherCity; i++) {
-            //rnd emigrant
-            int rnd = new Random().nextInt(immigrants.size() - 1);
-            Immigrant goSomeWhere = immigrants.get(rnd);
-            goSomeWhere.setCityNow(cities[new Random().nextInt(cities.length - 1)]);
-
-            //catch from police
-            police = polices[new Random().nextInt(polices.length - 1)];
-            police.catchImmigrants(goSomeWhere);
-        }
-
-        //System.out.println("Number of em...: "+emigrantAnotherCity);
-
-        for (int i = 0; i < immigrants.size(); i++) {
-            System.out.println(immigrants.get(i));
-        }
-
     }
 
     private static LinkedList<Immigrant> createImmigrants(City[] cities) {

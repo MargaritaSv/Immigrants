@@ -4,7 +4,7 @@ package immigrants;
  * Created by Magi on 9.8.2016 г..
  */
 public class Passport {
-     String name;
+    private String name;
     private short years;
     private String bornAddress;
 
