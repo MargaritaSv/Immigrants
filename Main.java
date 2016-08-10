@@ -18,6 +18,9 @@ public class Main {
     public static final int NUMBER_OF_IMMIGRANTS = 100;
     public static final int NUMBER_OF_WEAPONS = 200;
 
+    public static final String[] citiesPoland = {"Santok", "Krosno", "Lubusz", "Rogozno", "Poznan"};
+    public static final String[] citiesSudan = {"New Halfa", "Dueim", "Atbarah", "Sindscha", "Kaduqli", "Rabak", "Kassala", "Ubayyid", "Wad Madani", "Sennar", "Nahud", "Damir", "Maagil"};
+
     public static void main(String[] args) {
         //1
         Country poland = new Country("Poland");
@@ -73,10 +76,7 @@ public class Main {
         }
 
         //immigrants buy a gun
-     ///   int indexForWeapon = 0;
-//        boolean noMoreWeapons = false;
-
-        for (int exactBuyer = 0; exactBuyer < immigrants.length && weapons.size()!=0; exactBuyer++) {
+        for (int exactBuyer = 0; exactBuyer < immigrants.length && weapons.size() != 0; exactBuyer++) {
             for (int i = 0; i < 5; i++) {
                 if (immigrants[exactBuyer] instanceof Extremist) {
                     ((Extremist) immigrants[exactBuyer]).buyGun(weapons.get(0));
@@ -94,11 +94,14 @@ public class Main {
                     break; // it's normal immigrant
                 }
 
-                if (weapons.size()==0) {
+                if (weapons.size() == 0) {
                     break;
                 }
             }
         }
+
+
+        //4
 
 
         for (int i = 0; i < immigrants.length; i++) {
@@ -116,7 +119,7 @@ public class Main {
     private static Passport getPassport(String[] names) {
         Passport passport;
         passport = new Passport(names[new Random().nextInt(names.length - 1)],
-                (short) (new Random().nextInt(MAX_YEARS_IMMIGRANT) + MIN_YEARS_IMMIGRANT), "Some address capital  and city");
+                (short) (new Random().nextInt(MAX_YEARS_IMMIGRANT) + MIN_YEARS_IMMIGRANT), citiesSudan[new Random().nextInt(citiesSudan.length - 1)] + ", Sudan ");
         return passport;
     }
 }

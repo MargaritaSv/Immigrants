@@ -11,7 +11,6 @@ public class Extremist extends Immigrant implements Gunable {
         super(startedMoney);
     }
 
-
     @Override
     public void buyGun(Weapon weapon) {
         super.weaponList.add(weapon);

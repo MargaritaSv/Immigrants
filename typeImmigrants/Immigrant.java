@@ -37,7 +37,6 @@ public abstract class Immigrant {
         }
     }
 
-
     @Override
     public String toString() {
         StringBuilder sB = new StringBuilder();

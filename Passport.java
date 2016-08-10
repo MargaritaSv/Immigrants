@@ -35,6 +35,6 @@ public class Passport {
 
     @Override
     public String toString() {
-        return "\nName: " + this.getName() + " years: " + this.years + "\nAddress: " + this.bornAddress;
+        return "\nName: " + this.getName() + " years: " + this.years + "\nBorn: " + this.bornAddress;
     }
 }

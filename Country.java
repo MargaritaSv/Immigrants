@@ -1,5 +1,8 @@
 package immigrants;
 
+import immigrants.City;
+import immigrants.NamesGeographic;
+
 import java.util.TreeSet;
 
 /**
