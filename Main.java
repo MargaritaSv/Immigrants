@@ -18,7 +18,6 @@ public class Main {
     public static final int NUMBER_OF_IMMIGRANTS = 100;
     public static final int NUMBER_OF_WEAPONS = 200;
 
-    public static final String[] citiesPoland = {"Santok", "Krosno", "Lubusz", "Rogozno", "Poznan"};
     public static final String[] citiesSudan = {"New Halfa", "Dueim", "Atbarah", "Sindscha", "Kaduqli", "Rabak", "Kassala", "Ubayyid", "Wad Madani", "Sennar", "Nahud", "Damir", "Maagil"};
 
     public static void main(String[] args) {
@@ -33,35 +32,15 @@ public class Main {
 
         poland.addCities(santok, krosno, lubusz, rogozno, poznan);
 
-        //2
-        final String[] names = {"Zhlab", "DzinDjan", "Djafira", "Stanka", "Gergina", "Stefka", "Radka", "Pesho", "Gosho", "Andrelius", "Kasandra", "Armira", "Penelope"};
-        Immigrant[] immigrants = new Immigrant[NUMBER_OF_IMMIGRANTS];
+        //2 and 4
+        City[] cities = new City[]{krosno, santok, lubusz, rogozno, poznan};
 
-        for (int i = 0; i <= immigrants.length - 1; i++) {
-            Passport passport;
-            Immigrant immigrant;
-
-            if (Math.random() > 0.45) {
-                passport = getPassport(names);
-                immigrant = new Normal(passport, new Random().nextInt(5600) + 1000);
-
-            } else if (Math.random() > 0.35) {
-                immigrant = new Extremist(new Random().nextInt(560000) + 1000);
-
-            } else {
-                if (Math.random() <= 0.35) {
-                    immigrant = new Radical(getPassport(names), new Random().nextInt(5600) + 1000);
-                } else {
-                    immigrant = new Radical(getPassport(), new Random().nextInt(3000) + 1000);
-                }
-            }
-            immigrants[i] = immigrant;
-        }
+        Immigrant[] immigrants = createImmigrants(cities);
 
 
-        for (Immigrant imm : immigrants) {
+        for (Immigrant immigrant : immigrants) {
             for (int i = 0; i < 2; i++) {
-                imm.addFamily(immigrants[new Random().nextInt(immigrants.length - 1)]);
+                immigrant.addFamily(immigrants[new Random().nextInt(immigrants.length - 1)]);
             }
         }
 
@@ -108,6 +87,33 @@ public class Main {
             System.out.println(immigrants[i]);
         }
 
+    }
+
+    private static Immigrant[] createImmigrants(City[] cities) {
+        final String[] names = {"Zhlab", "DzinDjan", "Djafira", "Stanka", "Gergina", "Stefka", "Radka", "Pesho", "Gosho", "Andrelius", "Kasandra", "Armira", "Penelope"};
+        Immigrant[] immigrants = new Immigrant[NUMBER_OF_IMMIGRANTS];
+
+        for (int i = 0; i <= immigrants.length - 1; i++) {
+            Passport passport;
+            Immigrant immigrant;
+
+            if (Math.random() > 0.45) {
+                passport = getPassport(names);
+                immigrant = new Normal(passport, cities[new Random().nextInt(cities.length - 1)], new Random().nextInt(5600) + 1000);
+
+            } else if (Math.random() > 0.35) {
+                immigrant = new Extremist(new Random().nextInt(560000) + 1000, cities[new Random().nextInt(cities.length - 1)]);
+
+            } else {
+                if (Math.random() <= 0.35) {
+                    immigrant = new Radical(getPassport(names), cities[new Random().nextInt(cities.length - 1)], new Random().nextInt(5600) + 1000);
+                } else {
+                    immigrant = new Radical(getPassport(), cities[new Random().nextInt(cities.length - 1)], new Random().nextInt(3000) + 1000);
+                }
+            }
+            immigrants[i] = immigrant;
+        }
+        return immigrants;
     }
 
     private static Passport getPassport() {

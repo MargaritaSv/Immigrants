@@ -1,5 +1,6 @@
 package immigrants.typeImmigrants;
 
+import immigrants.City;
 import immigrants.Gunable;
 import immigrants.Weapon;
 
@@ -7,8 +8,8 @@ import immigrants.Weapon;
  * Created by Magi on 9.8.2016 г..
  */
 public class Extremist extends Immigrant implements Gunable {
-    public Extremist(int startedMoney) {
-        super(startedMoney);
+    public Extremist(int startedMoney, City cityNow) {
+        super(startedMoney, cityNow);
     }
 
     @Override
@@ -23,6 +24,6 @@ public class Extremist extends Immigrant implements Gunable {
 
     @Override
     public String toString() {
-        return "\nExtremist immigrant: " + super.toString();
+        return "\nExtremist immigrant: \n" + super.toString();
     }
 }

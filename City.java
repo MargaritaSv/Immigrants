@@ -1,5 +1,6 @@
 package immigrants;
 
+import immigrants.polices.PoliceOfficer;
 import immigrants.typeImmigrants.Immigrant;
 
 import java.util.ArrayList;
@@ -11,7 +12,7 @@ import java.util.List;
  */
 public class City extends NamesGeographic implements Comparable<City> {
     List<PoliceOfficer> policeOfficers;
-    int residents;
+    int residents; //all people
     List<Immigrant> immigrants;
 
     public City(String name, int residents) {
@@ -25,6 +26,16 @@ public class City extends NamesGeographic implements Comparable<City> {
 
         policeOfficers = new ArrayList<>();
         immigrants = new LinkedList<>();
+    }
+
+    public void removeImmigrantCurrentCity(Immigrant immigrant) {
+        this.residents--;
+        immigrants.remove(immigrant);
+    }
+
+    public void addImmigrantCurrentCity(Immigrant immigrant) {
+        this.residents++;
+        immigrants.add(immigrant);
     }
 
     @Override

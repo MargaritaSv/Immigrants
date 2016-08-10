@@ -1,5 +1,6 @@
 package immigrants.typeImmigrants;
 
+import immigrants.City;
 import immigrants.Passport;
 
 /**
@@ -8,8 +9,8 @@ import immigrants.Passport;
 public class Normal extends Immigrant {
     Passport passport;
 
-    public Normal(Passport passport, int startedMoney) {
-        super(startedMoney);
+    public Normal(Passport passport, City cityNow, int startedMoney) {
+        super(startedMoney,cityNow);
         this.passport = passport;
     }
 

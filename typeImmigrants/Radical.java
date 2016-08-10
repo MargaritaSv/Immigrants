@@ -1,5 +1,6 @@
 package immigrants.typeImmigrants;
 
+import immigrants.City;
 import immigrants.Gunable;
 import immigrants.Passport;
 import immigrants.Weapon;
@@ -10,8 +11,8 @@ import immigrants.Weapon;
 public class Radical extends Immigrant implements Gunable {
     Passport passport;
 
-    public Radical(Passport passport, int borderMoney) {
-        super(borderMoney);
+    public Radical(Passport passport, City cityNow, int borderMoney) {
+        super(borderMoney, cityNow);
         this.passport = passport;
     }
 
@@ -26,7 +27,7 @@ public class Radical extends Immigrant implements Gunable {
         super.borderMoney -= weapon.getCost();
 
         if (super.borderMoney <= 0) {
-            super.borderMoney =0;
+            super.borderMoney = 0;
             System.out.println("write something /... no money ");
         }
     }

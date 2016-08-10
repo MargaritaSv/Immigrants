@@ -20,4 +20,8 @@ public class Country extends NamesGeographic {
             cities.add(c);
         }
     }
+
+    public TreeSet<City> getCities() {
+        return cities;
+    }
 }
