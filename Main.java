@@ -87,6 +87,19 @@ public class Main {
             System.out.println(immigrants.get(i));
         }
 
+        //6
+        for (int i = 0; i < 20; i++) {
+            Immigrant kamikadze = immigrants.get(new Random().nextInt(immigrants.size() - 1));
+            if (kamikadze.getWeaponList().contains(Weapon.BOMB)) {
+                immigrants.remove(kamikadze);
+                System.out.println("BOOM! Kamikadze die ");
+                continue;
+            }
+
+            if (kamikadze.getWeaponList().contains(Weapon.AUTOMATE) || kamikadze.getWeaponList().contains(Weapon.GUN)) {
+                System.out.println("SPARTAAAAAA!");
+            }
+        }
     }
 
     private static void immigrantsBuyAGun(LinkedList<Immigrant> immigrants, List<Weapon> weapons) {

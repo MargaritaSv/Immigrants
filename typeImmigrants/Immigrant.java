@@ -88,6 +88,4 @@ public abstract class Immigrant {
         }
         return sB.toString();
     }
-
-
 }
