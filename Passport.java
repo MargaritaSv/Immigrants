@@ -4,9 +4,9 @@ package immigrants;
  * Created by Magi on 9.8.2016 г..
  */
 public class Passport {
-    String name;
-    short years;
-    String bornAddress;
+     String name;
+    private short years;
+    private String bornAddress;
 
     public Passport(String name, short years, String bornAddress) {
         if (!checkValidation(name)) {

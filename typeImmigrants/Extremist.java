@@ -8,6 +8,7 @@ import immigrants.Weapon;
  * Created by Magi on 9.8.2016 г..
  */
 public class Extremist extends Immigrant implements Gunable {
+
     public Extremist(int startedMoney, City cityNow) {
         super(startedMoney, cityNow);
     }
@@ -19,6 +20,7 @@ public class Extremist extends Immigrant implements Gunable {
 
         if (super.borderMoney <= 0) {
             System.out.println("write something /... no money ");
+
         }
     }
 

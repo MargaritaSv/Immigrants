@@ -9,7 +9,7 @@ import immigrants.Weapon;
  * Created by Magi on 9.8.2016 г..
  */
 public class Radical extends Immigrant implements Gunable {
-    Passport passport;
+    private Passport passport;
 
     public Radical(Passport passport, City cityNow, int borderMoney) {
         super(borderMoney, cityNow);
@@ -28,10 +28,9 @@ public class Radical extends Immigrant implements Gunable {
 
         if (super.borderMoney <= 0) {
             super.borderMoney = 0;
-            System.out.println("write something /... no money ");
+            //   System.out.println("write something /... no money ");
         }
     }
-
 
     @Override
     public String toString() {

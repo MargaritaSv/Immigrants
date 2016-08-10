@@ -1,8 +1,6 @@
 package immigrants;
 
-import immigrants.polices.Police;
-import immigrants.polices.PoliceOfficer;
-import immigrants.polices.SpecialForces;
+import immigrants.polices.*;
 import immigrants.typeImmigrants.Extremist;
 import immigrants.typeImmigrants.Immigrant;
 import immigrants.typeImmigrants.Normal;
@@ -38,12 +36,11 @@ public class Main {
         //2 and 4
         City[] cities = new City[]{krosno, santok, lubusz, rogozno, poznan};
 
-        Immigrant[] immigrants = createImmigrants(cities);
-
+        LinkedList<Immigrant> immigrants = createImmigrants(cities);
 
         for (Immigrant immigrant : immigrants) {
             for (int i = 0; i < 2; i++) {
-                immigrant.addFamily(immigrants[new Random().nextInt(immigrants.length - 1)]);
+                immigrant.addFamily(immigrants.get(new Random().nextInt(immigrants.size() - 1)));
             }
         }
 
@@ -57,19 +54,28 @@ public class Main {
             weapons.add(weapon);
         }
 
-        //immigrants buy a gun
-        for (int exactBuyer = 0; exactBuyer < immigrants.length && weapons.size() != 0; exactBuyer++) {
-            for (int i = 0; i < 5; i++) {
-                if (immigrants[exactBuyer] instanceof Extremist) {
-                    ((Extremist) immigrants[exactBuyer]).buyGun(weapons.get(0));
-                    weapons.remove(0);
+        System.out.println("Number of Immigrants: " + immigrants.size());
 
-                } else if (immigrants[exactBuyer] instanceof Radical) {
+        //immigrants buy a gun
+        for (int exactBuyer = 0; exactBuyer < immigrants.size() && weapons.size() != 0; exactBuyer++) {
+            for (int i = 0; i < 5; i++) {
+                if (immigrants.get(exactBuyer) instanceof Extremist) {
+                    ((Extremist) immigrants.get(exactBuyer)).buyGun(weapons.get(0));
+                    weapons.remove(0);
+                    //TODO: fix later
+                    if (immigrants.get(exactBuyer).getBorderMoney() == 0) {
+                        immigrants.remove(exactBuyer);
+                    }
+
+                } else if (immigrants.get(exactBuyer) instanceof Radical) {
                     int index = 0;
                     while (weapons.get(index).equals(Weapon.BOMB)) {
                         index++;
+                        if (weapons.size() >= index) {
+                            break;
+                        }
                     }
-                    ((Radical) immigrants[exactBuyer]).buyGun(weapons.get(index));
+                    ((Radical) immigrants.get(exactBuyer)).buyGun(weapons.get(index));
                     weapons.remove(index);
 
                 } else {
@@ -82,6 +88,7 @@ public class Main {
             }
         }
 
+        System.out.println("Number of Immigrants: " + immigrants.size());
 
         //4
 
@@ -99,31 +106,31 @@ public class Main {
         }
 
         //4.2 thirty percent from all emigrants go there... and there ... and everywhere
-        int emigrantAnotherCity = (int) (immigrants.length * 0.3);
+        int emigrantAnotherCity = (int) (immigrants.size() * 0.3);
         for (int i = 0; i < emigrantAnotherCity; i++) {
             //rnd emigrant
-            int rnd = new Random().nextInt(immigrants.length - 1);
-            Immigrant goSomeWhere = immigrants[rnd];
+            int rnd = new Random().nextInt(immigrants.size() - 1);
+            Immigrant goSomeWhere = immigrants.get(rnd);
             goSomeWhere.setCityNow(cities[new Random().nextInt(cities.length - 1)]);
+
             //catch from police
-//vzimame policai na rnd prin .. i method catch tam sii
             police = polices[new Random().nextInt(polices.length - 1)];
             police.catchImmigrants(goSomeWhere);
         }
 
         //System.out.println("Number of em...: "+emigrantAnotherCity);
 
-        for (int i = 0; i < immigrants.length; i++) {
-            System.out.println(immigrants[i]);
+        for (int i = 0; i < immigrants.size(); i++) {
+            System.out.println(immigrants.get(i));
         }
 
     }
 
-    private static Immigrant[] createImmigrants(City[] cities) {
+    private static LinkedList<Immigrant> createImmigrants(City[] cities) {
         final String[] names = {"Zhlab", "DzinDjan", "Djafira", "Stanka", "Gergina", "Stefka", "Radka", "Pesho", "Gosho", "Andrelius", "Kasandra", "Armira", "Penelope"};
-        Immigrant[] immigrants = new Immigrant[NUMBER_OF_IMMIGRANTS];
+        LinkedList<Immigrant> immigrants = new LinkedList<>();
 
-        for (int i = 0; i <= immigrants.length - 1; i++) {
+        for (int i = 0; i < NUMBER_OF_IMMIGRANTS; i++) {
             Passport passport;
             Immigrant immigrant;
 
@@ -141,7 +148,7 @@ public class Main {
                     immigrant = new Radical(getPassport(), cities[new Random().nextInt(cities.length - 1)], new Random().nextInt(3000) + 1000);
                 }
             }
-            immigrants[i] = immigrant;
+            immigrants.add(immigrant);
         }
         return immigrants;
     }

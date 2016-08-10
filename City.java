@@ -28,6 +28,7 @@ public class City extends NamesGeographic implements Comparable<City> {
         immigrants = new LinkedList<>();
     }
 
+
     public void removeImmigrantCurrentCity(Immigrant immigrant) {
         this.residents--;
         immigrants.remove(immigrant);

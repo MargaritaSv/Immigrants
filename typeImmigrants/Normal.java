@@ -7,10 +7,10 @@ import immigrants.Passport;
  * Created by Magi on 9.8.2016 г..
  */
 public class Normal extends Immigrant {
-    Passport passport;
+    private Passport passport;
 
     public Normal(Passport passport, City cityNow, int startedMoney) {
-        super(startedMoney,cityNow);
+        super(startedMoney, cityNow);
         this.passport = passport;
     }
 
