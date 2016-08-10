@@ -17,6 +17,6 @@ public class Normal extends Immigrant {
 
     @Override
     public String toString() {
-        return this.passport + " \n"+ super.toString();
+        return this.passport + "\nImmigrant: normal" + " \n" + super.toString();
     }
 }

@@ -52,7 +52,7 @@ public abstract class Immigrant {
 */
         sB.append(this.family.size());
 
-        sB.append("\nWeapon/s:\n");
+        sB.append("\nWeapon/s: ");
        this. weaponList.forEach(x -> sB.append(x.name().toString().toLowerCase()).append(", "));
 
         return sB.toString();

@@ -24,6 +24,6 @@ public class Extremist extends Immigrant implements Gunable {
 
     @Override
     public String toString() {
-        return "Extremist immigrant: " + super.toString();
+        return "\nExtremist immigrant: " + super.toString();
     }
 }

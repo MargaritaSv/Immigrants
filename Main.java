@@ -73,25 +73,33 @@ public class Main {
         }
 
         //immigrants buy a gun
-        int indexForWeapon = 0;
-        boolean noMoreWeapons = false;
+     ///   int indexForWeapon = 0;
+//        boolean noMoreWeapons = false;
 
-        for (int exactBuyer = 0; exactBuyer < immigrants.length && noMoreWeapons == false; exactBuyer++) {
+        for (int exactBuyer = 0; exactBuyer < immigrants.length && weapons.size()!=0; exactBuyer++) {
             for (int i = 0; i < 5; i++) {
                 if (immigrants[exactBuyer] instanceof Extremist) {
-                    ((Extremist) immigrants[exactBuyer]).buyGun(weapons.get(indexForWeapon++));
+                    ((Extremist) immigrants[exactBuyer]).buyGun(weapons.get(0));
+                    weapons.remove(0);
+
                 } else if (immigrants[exactBuyer] instanceof Radical) {
-                    ((Radical) immigrants[exactBuyer]).buyGun(weapons.get(indexForWeapon++));
+                    int index = 0;
+                    while (weapons.get(index).equals(Weapon.BOMB)) {
+                        index++;
+                    }
+                    ((Radical) immigrants[exactBuyer]).buyGun(weapons.get(index));
+                    weapons.remove(index);
+
                 } else {
                     break; // it's normal immigrant
                 }
 
-                if (indexForWeapon >= weapons.size()) {
-                    noMoreWeapons = true;
+                if (weapons.size()==0) {
                     break;
                 }
             }
         }
+
 
         for (int i = 0; i < immigrants.length; i++) {
             System.out.println(immigrants[i]);
