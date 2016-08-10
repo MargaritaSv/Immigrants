@@ -11,9 +11,9 @@ import java.util.List;
  * Created by Magi on 6.8.2016 г..
  */
 public class City extends NamesGeographic implements Comparable<City> {
-    List<PoliceOfficer> policeOfficers;
-    int residents; //all people
-    List<Immigrant> immigrants;
+    private List<PoliceOfficer> policeOfficers;
+    private int residents; //all people
+    private List<Immigrant> immigrants;
 
     public City(String name, int residents) {
         super(name);
@@ -49,8 +49,11 @@ public class City extends NamesGeographic implements Comparable<City> {
 
     public void victims(int victims) {
         System.out.println(this.getName() + " --> " + this.residents);
-        this.residents -= victims;
 
+        this.residents -= victims;
+        if (this.residents < 0) {
+            this.residents = 0;
+        }
         System.out.println(this.getName() + " --> " + this.residents);
     }
 }

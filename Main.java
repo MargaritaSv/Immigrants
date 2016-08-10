@@ -80,14 +80,19 @@ public class Main {
             police.catchImmigrants(goSomeWhere);
         }
 
-        //System.out.println("Number of em...: "+emigrantAnotherCity);
-
         //5
         for (int i = 0; i < immigrants.size(); i++) {
             System.out.println(immigrants.get(i));
         }
 
         //6
+        System.out.println("\n Cities with bad immigrants:\n");
+        attackedCities(immigrants);
+
+
+    }
+
+    private static void attackedCities(LinkedList<Immigrant> immigrants) {
         for (int i = 0; i < 20; i++) {
             Immigrant kamikadze = immigrants.get(new Random().nextInt(immigrants.size() - 1));
 

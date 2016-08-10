@@ -23,6 +23,4 @@ public abstract class BasicData {
     protected String getName() {
         return name;
     }
-
-
 }
