@@ -67,14 +67,19 @@ public abstract class Immigrant {
         StringBuilder sB = new StringBuilder();
         sB.append("Current location: ").append(this.cityNow.getName()).append(", Poland");
         sB.append("\nFamily:").append(System.lineSeparator());
-/*
+
         for (int i = 0; i < family.size(); i++) {
             if (family.get(i) instanceof Normal) {
-               // sB.append("      --").append(family.get(i).getName());
+                sB.append("      --").append(((Normal) family.get(i)).getPassport().getName()).append("\n");
+            }
+
+            if (family.get(i) instanceof Radical) {
+                sB.append("      --").append(((Radical) family.get(i)).getPassport().getName()).append("\n");
+            } else {
+                sB.append("      --").append("uncle is extremist!\n");
             }
         }
-        */
-        sB.append(this.family.size());
+
         sB.append("\nBorder money: ").append(this.moneyBeforeBuy).append("$");
         if (!(this instanceof Normal)) {
             sB.append("\nMoney after bayed gun/s: ").append(this.borderMoney).append("$");

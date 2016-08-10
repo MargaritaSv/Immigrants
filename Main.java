@@ -82,6 +82,7 @@ public class Main {
 
         //System.out.println("Number of em...: "+emigrantAnotherCity);
 
+        //5
         for (int i = 0; i < immigrants.size(); i++) {
             System.out.println(immigrants.get(i));
         }

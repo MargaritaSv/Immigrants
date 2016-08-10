@@ -16,6 +16,9 @@ public class Radical extends Immigrant implements Gunable {
         this.passport = passport;
     }
 
+    public Passport getPassport() {
+        return passport;
+    }
 
     @Override
     public void buyGun(Weapon weapon) {

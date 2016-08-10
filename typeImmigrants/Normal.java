@@ -14,6 +14,9 @@ public class Normal extends Immigrant {
         this.passport = passport;
     }
 
+    public Passport getPassport() {
+        return passport;
+    }
 
     @Override
     public String toString() {
