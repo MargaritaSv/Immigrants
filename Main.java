@@ -90,14 +90,23 @@ public class Main {
         //6
         for (int i = 0; i < 20; i++) {
             Immigrant kamikadze = immigrants.get(new Random().nextInt(immigrants.size() - 1));
+
             if (kamikadze.getWeaponList().contains(Weapon.BOMB)) {
                 immigrants.remove(kamikadze);
                 System.out.println("BOOM! Kamikadze die ");
+                kamikadze.getCityNow().victims(Weapon.BOMB.getCost());
                 continue;
             }
 
             if (kamikadze.getWeaponList().contains(Weapon.AUTOMATE) || kamikadze.getWeaponList().contains(Weapon.GUN)) {
                 System.out.println("SPARTAAAAAA!");
+                if (kamikadze.getWeaponList().contains(Weapon.AUTOMATE)) {
+                    kamikadze.getCityNow().victims(Weapon.BOMB.getCost());
+                }
+
+                if (kamikadze.getWeaponList().contains(Weapon.GUN)) {
+                    kamikadze.getCityNow().victims(Weapon.GUN.getCost());
+                }
             }
         }
     }

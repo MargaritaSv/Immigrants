@@ -46,4 +46,11 @@ public class City extends NamesGeographic implements Comparable<City> {
             return -1;
         }
     }
+
+    public void victims(int victims) {
+        System.out.println(this.getName() + " --> " + this.residents);
+        this.residents -= victims;
+
+        System.out.println(this.getName() + " --> " + this.residents);
+    }
 }

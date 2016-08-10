@@ -28,6 +28,10 @@ public abstract class Immigrant {
         return borderMoney;
     }
 
+    public City getCityNow() {
+        return cityNow;
+    }
+
     public List<Weapon> getWeaponList() {
         return weaponList;
     }
