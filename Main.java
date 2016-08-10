@@ -103,10 +103,12 @@ public class Main {
         for (int i = 0; i < emigrantAnotherCity; i++) {
             //rnd emigrant
             int rnd = new Random().nextInt(immigrants.length - 1);
-            immigrants[rnd].setCityNow(cities[new Random().nextInt(cities.length - 1)]);
+            Immigrant goSomeWhere = immigrants[rnd];
+            goSomeWhere.setCityNow(cities[new Random().nextInt(cities.length - 1)]);
             //catch from police
-
-
+//vzimame policai na rnd prin .. i method catch tam sii
+            police = polices[new Random().nextInt(polices.length - 1)];
+            police.catchImmigrants(goSomeWhere);
         }
 
         //System.out.println("Number of em...: "+emigrantAnotherCity);
