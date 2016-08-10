@@ -1,7 +1,7 @@
 package immigrants.typeImmigrants;
 
 import immigrants.City;
-import immigrants.Gunable;
+import immigrants.interfaces.Gunable;
 import immigrants.Passport;
 import immigrants.Weapon;
 

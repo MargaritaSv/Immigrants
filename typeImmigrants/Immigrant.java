@@ -22,6 +22,9 @@ public abstract class Immigrant {
         this.cityNow = cityNow;
     }
 
+    public List<Weapon> getWeaponList() {
+        return weaponList;
+    }
 
     public void setCityNow(City cityNow) {
         if (this.cityNow.equals(cityNow)) {
