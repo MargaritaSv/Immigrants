@@ -27,7 +27,6 @@ public class PoliceOfficer extends Police {
     public void checkImmigrants(Immigrant immigrant) {
         if (immigrant instanceof Extremist) {
             if (immigrant.getWeaponList().contains(Weapon.BOMB)) {
-                // throw new IllegalArgumentException("\nThe immigrant is very dangerous for the police officers!");
                 System.out.println("The immigrant is very dangerous for the police officers " + this.getName() + "!");
             }
         }

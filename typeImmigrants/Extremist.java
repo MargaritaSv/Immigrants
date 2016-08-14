@@ -20,7 +20,6 @@ public class Extremist extends Immigrant implements Gunable {
 
         if (super.borderMoney <= 0) {
             System.out.println("write something /... no money ");
-
         }
     }
 

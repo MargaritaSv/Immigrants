@@ -1,6 +1,7 @@
 package immigrants.typeImmigrants;
 
 import immigrants.City;
+import immigrants.exceprions.ImmigrantsException;
 import immigrants.interfaces.Gunable;
 import immigrants.Passport;
 import immigrants.Weapon;
@@ -21,9 +22,9 @@ public class Radical extends Immigrant implements Gunable {
     }
 
     @Override
-    public void buyGun(Weapon weapon) {
+    public void buyGun(Weapon weapon) throws ImmigrantsException {
         if (super.weaponList.size() >= 5) {
-            throw new IllegalArgumentException("You ca not have more than 5 weapons.");
+            throw new ImmigrantsException("You ca not have more than 5 weapons.");
         }
 
         super.weaponList.add(weapon);

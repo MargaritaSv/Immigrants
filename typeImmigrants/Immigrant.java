@@ -2,6 +2,7 @@ package immigrants.typeImmigrants;
 
 import immigrants.City;
 import immigrants.Weapon;
+import immigrants.exceprions.ImmigrantsException;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -36,10 +37,9 @@ public abstract class Immigrant {
         return weaponList;
     }
 
-    public void setCityNow(City cityNow) {
+    public void setCityNow(City cityNow) throws ImmigrantsException {
         if (this.cityNow.equals(cityNow)) {
-            //  throw new IllegalArgumentException("The immigrant is already in " + this.cityNow.getName());
-            System.out.println("The immigrant is already in " + this.cityNow.getName());
+            throw new ImmigrantsException("The immigrant is already in " + this.cityNow.getName());
         }
 
         this.cityNow.removeImmigrantCurrentCity(this);
@@ -48,19 +48,16 @@ public abstract class Immigrant {
         this.cityNow = cityNow;
     }
 
-    public void addFamily(Immigrant immigrant) {
-        //TODO: remove in the end
-        /*
+    public void addFamily(Immigrant immigrant) throws ImmigrantsException {
         if (family.contains(immigrant)) {
-            throw new IllegalArgumentException("The immigrant is already added to family");
+            throw new ImmigrantsException("The immigrant is already added to family");
         }
-        */
 
         if (!(this instanceof Normal)) {
             this.family.add(immigrant);
         } else {
             if (this.family.size() >= 11) {
-                throw new IllegalArgumentException("No more people added to your family three!");
+                throw new ImmigrantsException("No more people added to your family three!");
             }
             this.family.add(immigrant);
         }
